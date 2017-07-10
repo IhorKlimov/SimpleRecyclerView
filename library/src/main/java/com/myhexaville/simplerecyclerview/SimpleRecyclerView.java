@@ -22,6 +22,7 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
     private SimpleRecyclerViewImpl recycler;
     private ViewStub emptyView;
     private int progressLayout;
+    private boolean footerEnabled;
 
     public SimpleRecyclerView(@NonNull Context context) {
         super(context);
@@ -79,10 +80,12 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         recycler.setAdapter(adapter);
         recycler.setOnEmptyListener(this);
         adapter.progressLayout = progressLayout;
+        adapter.isFooterEnabled = footerEnabled;
     }
 
     public void setOnLoadMoreListener(Runnable listener) {
         recycler.setOnLoadMoreListener(listener);
+        this.footerEnabled = true;
     }
 
     public void setDoneFetching() {
@@ -108,7 +111,7 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         private static final int ITEM_TYPE_FOOTER = 2;
 
         @Override
-        public int getItemViewType(int position) {
+        final public int getItemViewType(int position) {
             if (isFooterEnabled) {
                 if (position == getItemCount() - 1) {
                     return ITEM_TYPE_FOOTER;

@@ -38,29 +38,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupList() {
-//        list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
-//        list.add(new Movie("http://fantasynscifi.com/wp-content/uploads/2016/06/ogimage_img.jpg"));
-//        list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
-//        list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
-//        list.add(new Movie("http://fantasynscifi.com/wp-content/uploads/2016/06/ogimage_img.jpg"));
-//        list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
+        list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
+        list.add(new Movie("http://fantasynscifi.com/wp-content/uploads/2016/06/ogimage_img.jpg"));
+        list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
 
+        binding.list.setOnLoadMoreListener(() -> {
+            new Handler().postDelayed(() -> {
+                list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
+                list.add(new Movie("http://fantasynscifi.com/wp-content/uploads/2016/06/ogimage_img.jpg"));
+                list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
+
+                binding.list.setDoneFetching();
+            }, 3000);
+        });
         binding.list.setLayoutManager(new LinearLayoutManager(this));
         binding.list.setAdapter(new Adapter(this, list));
-        binding.list.setOnLoadMoreListener(() -> {
-            Log.d(LOG_TAG, "setupList: fetch more");
-
-            if (!fetched) {
-                new Handler().postDelayed(() -> {
-                    list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
-                    list.add(new Movie("http://fantasynscifi.com/wp-content/uploads/2016/06/ogimage_img.jpg"));
-                    list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
-                    fetched = true;
-                    binding.list.setDoneFetching();
-                }, 3000);
-            } else {
-                binding.list.setNoMoreToFetch();
-            }
-        });
     }
 }

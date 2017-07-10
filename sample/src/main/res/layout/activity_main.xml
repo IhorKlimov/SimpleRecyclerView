@@ -25,7 +25,6 @@
             android:layout_width="match_parent"
             android:id="@+id/list"
             app:empty_layout="@layout/empty_layout"
-            app:progress_layout="@layout/progress_layout"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_height="match_parent"/>
 

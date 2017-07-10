@@ -43,7 +43,6 @@ public class SimpleRecyclerViewImpl extends RecyclerView {
     public void setOnLoadMoreListener(Runnable onLoadMoreListener) {
         this.onLoadMoreListener = onLoadMoreListener;
         endlessListener.listener = onLoadMoreListener;
-        ((SimpleRecyclerView.Adapter)getAdapter()).isFooterEnabled = true;
     }
 
     public void setDoneFetching() {

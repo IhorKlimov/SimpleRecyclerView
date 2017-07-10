@@ -36,7 +36,6 @@ public class Adapter extends SimpleRecyclerView.Adapter<Holder> {
     public void onBindHolder(Holder holder, int position) {
         Movie m = list.get(position);
         holder.binding.setMovie(m);
-        holder.binding.text.setText(position+"");
     }
 
 }
