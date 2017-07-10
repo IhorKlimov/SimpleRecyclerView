@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SimpleRecyclerView">
+        <attr name="empty_layout" format="reference" />
+        <attr name="progress_layout" format="reference" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.myhexaville.simplerecyclerview.sample.model.Movie" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:imageUrl="@{movie.posterUrl}" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/text"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+</layout>
