@@ -71,6 +71,9 @@ simpleRecyclerView.setOnLoadMoreListener(() -> {
 });
 ```
 This listener will be called each time you reach bottom of the list and will display default ProgressBar footer
+
+![ezgif com-crop 2](https://i0.wp.com/myhexaville.com/wp-content/uploads/2017/07/ezgif.com-resize.gif?w=360)
+
 #### Custom ProgressBar footer
 If you want to use your own ProgressBar footer - create your own progress_footer.xml
 ```xml
@@ -94,7 +97,7 @@ and pass to SimpleRecyclerView
             android:layout_height="match_parent"/>
 ```
 #### No More To Fetch
-If you server returns no items and you don't want onFetchMore listener to be called anymore just like don't display ProgressBar any more - call this method
+If you server returns no items and you don't want setOnLoadMoreListener listener to be called anymore just like don't display ProgressBar any more - call this method
 ```java
 simpleRecyclerView.setOnLoadMoreListener(() -> {
   ...
