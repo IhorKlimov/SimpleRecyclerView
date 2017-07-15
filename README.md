@@ -72,7 +72,7 @@ simpleRecyclerView.setOnLoadMoreListener(() -> {
 ```
 This listener will be called each time you reach bottom of the list and will display default ProgressBar footer
 
-![ezgif com-crop 2](https://i0.wp.com/myhexaville.com/wp-content/uploads/2017/07/ezgif.com-resize.gif?w=360)
+![ezgif com-resize](https://user-images.githubusercontent.com/13784275/28240655-861a60ca-697d-11e7-9e34-62794e2b0297.gif)
 
 #### Custom ProgressBar footer
 If you want to use your own ProgressBar footer - create your own progress_footer.xml
