@@ -126,4 +126,6 @@ And pass to SimpleRecyclerView
             android:layout_height="match_parent"/>
 ```
 
-
+Sample
+------
+There's a sample of using this library in this repo
