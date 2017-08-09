@@ -21,6 +21,7 @@ public class EndlessScrollListener extends RecyclerView.OnScrollListener {
 
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+        Log.d(LOG_TAG, "onScrolled() called with:  dx = [" + dx + "], dy = [" + dy + "]");
         super.onScrolled(recyclerView, dx, dy);
 
         RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
@@ -34,13 +35,21 @@ public class EndlessScrollListener extends RecyclerView.OnScrollListener {
 
 
             if (isLastItemVisible && !isLoading) {
-                Log.d(LOG_TAG, "onScrolled: ");
-                isLoading = true;
-                sizeBeforeFetching = adapter.getCount();
-                if (listener!=null  ) {
-                    listener.run();
-                }
+                fetchMore(adapter);
             }
+        }
+    }
+
+    public void fetchMore(SimpleRecyclerView.Adapter adapter) {
+        Log.d(LOG_TAG, "fetchMore: ");
+        isLoading = true;
+        if (this.adapter == null) {
+            this.adapter = adapter;
+        }
+        sizeBeforeFetching = adapter.getCount();
+        if (listener!=null  ) {
+            Log.d(LOG_TAG, "fetchMore: run");
+            listener.run();
         }
     }
 

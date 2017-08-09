@@ -3,5 +3,6 @@
     <declare-styleable name="SimpleRecyclerView">
         <attr name="empty_layout" format="reference" />
         <attr name="progress_layout" format="reference" />
+        <attr name="initial_progress_bar_enabled" format="boolean" />
     </declare-styleable>
 </resources>

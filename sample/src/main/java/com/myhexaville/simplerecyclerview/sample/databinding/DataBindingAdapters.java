@@ -13,7 +13,6 @@ public class DataBindingAdapters {
 
     @BindingAdapter("app:imageUrl")
     public static void loadImage(ImageView v, String imgUrl) {
-
         Glide.with(v.getContext())
                 .load(imgUrl)
                 .diskCacheStrategy(sCacheStrategy)

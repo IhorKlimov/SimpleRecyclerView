@@ -18,7 +18,7 @@ import com.myhexaville.simplerecyclerview.listeners.OnEmptyListener;
 public class SimpleRecyclerViewImpl extends RecyclerView {
     private static final String LOG_TAG = "SimpleRecyclerView";
     private Runnable onLoadMoreListener;
-    private EndlessScrollListener endlessListener;
+    public EndlessScrollListener endlessListener;
 
     public SimpleRecyclerViewImpl(Context context) {
         super(context);
@@ -46,11 +46,17 @@ public class SimpleRecyclerViewImpl extends RecyclerView {
     }
 
     public void setDoneFetching() {
+        if (getAdapter() == null) {
+            throw new NullPointerException("Call setDoneFetching() method only after you've set SimpleRecyclerView.Adapter");
+        }
         endlessListener.setDoneFetching();
+        Log.d(LOG_TAG, "setDoneFetching: " + endlessListener.sizeAfterFetching + " " + endlessListener.sizeBeforeFetching);
         if (endlessListener.sizeAfterFetching > endlessListener.sizeBeforeFetching) {
             getAdapter().notifyItemRangeInserted(
                     endlessListener.sizeBeforeFetching,
                     endlessListener.sizeAfterFetching - endlessListener.sizeBeforeFetching);
+        } else if (endlessListener.sizeBeforeFetching == 0) {
+            getAdapter().notifyDataSetChanged();
         }
     }
 
