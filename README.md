@@ -8,7 +8,7 @@ Download
 
 ```gradle
 dependencies {
-   compile 'com.myhexaville:simple-recyclerview:0.1.1'
+   compile 'com.myhexaville:simple-recyclerview:0.2.0'
 }
 ```
 
@@ -129,6 +129,36 @@ And pass to SimpleRecyclerView
             android:layout_height="match_parent"/>
 ```
 
+### Initial ProgressBar
+Initial ProgressBar in the center is enabled by default. To hide it after you fetched your data call this method
+```java
+simpleRecyclerView.setDoneFetching();
+```
+Call this method even if you have data preloaded and just set it during SimpleRecyclerView setup
+
+To disable initial ProgressBar - use this attribute
+```xml
+<com.myhexaville.simplerecyclerview.SimpleRecyclerView
+            ...
+            app:initial_progress_bar_enabled="false"/>
+```
+
+### Inside NestedScrollView
+If you have SimpleRecyclerView inside of NestedScrollView - here's few initial tips and how to manage setOnLoadMoreListener with it
+
+```xml
+<NestedScrollView
+   ...
+   android:fillViewport="true"/>
+```
+```xml
+<com.myhexaville.simplerecyclerview.SimpleRecyclerView
+    ...
+    android:nestedScrollingEnabled="false"/>
+```
+```java
+simpleRecyclerView.setInsideNestedScrollView(nestedScrollView);
+```
 Sample
 ------
 There's a sample of using this library in this repo
