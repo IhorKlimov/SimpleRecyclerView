@@ -1,6 +1,6 @@
 package com.myhexaville.simplerecyclerview.sample.databinding;
 
-import android.databinding.BindingAdapter;
+import androidx.databinding.BindingAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;

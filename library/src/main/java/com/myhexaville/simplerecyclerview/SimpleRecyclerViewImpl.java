@@ -2,16 +2,12 @@ package com.myhexaville.simplerecyclerview;
 
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.myhexaville.simplerecyclerview.holders.ProgressBarHolder;
 import com.myhexaville.simplerecyclerview.listeners.EndlessScrollListener;
 import com.myhexaville.simplerecyclerview.listeners.OnEmptyListener;
 
