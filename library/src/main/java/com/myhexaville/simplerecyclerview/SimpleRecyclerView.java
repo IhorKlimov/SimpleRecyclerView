@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -108,6 +107,14 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         recycler.setOnLoadMoreListener(listener);
         this.footerEnabled = true;
         adapter.isFooterEnabled = true;
+    }
+
+    public void addItemDecoration(@NonNull  RecyclerView.ItemDecoration decor) {
+        recycler.addItemDecoration(decor);
+    }
+
+    public void addItemDecoration(@NonNull  RecyclerView.ItemDecoration decor, int index) {
+        recycler.addItemDecoration(decor, index);
     }
 
     public void setDoneFetching() {

@@ -1,20 +1,21 @@
 package com.myhexaville.simplerecyclerview.sample;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.os.Handler;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.myhexaville.simplerecyclerview.sample.databinding.ActivityMainBinding;
 import com.myhexaville.simplerecyclerview.sample.model.Movie;
 
 import java.util.ArrayList;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "MainActivity";
@@ -29,12 +30,16 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(binding.toolbar);
 
-        setupList();
+        setUpList();
     }
 
-    private void setupList() {
+    private void setUpList() {
         binding.simpleRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.simpleRecyclerView.setAdapter(new Adapter(this, list));
+
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(this, R.drawable.list_item_divider));
+        binding.simpleRecyclerView.addItemDecoration(itemDecorator);
 
         new Handler().postDelayed(() -> {
             list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));

@@ -8,7 +8,7 @@ Download
 
 ```gradle
 dependencies {
-   compile 'com.myhexaville:simple-recyclerview:0.2.0'
+   compile 'com.myhexaville:simple-recyclerview:1.1.0'
 }
 ```
 
