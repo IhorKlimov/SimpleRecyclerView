@@ -188,5 +188,6 @@
     <orderEntry type="library" name="Gradle: androidx.databinding:databinding-runtime:3.4.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.collection:collection:1.0.0@jar" level="project" />
     <orderEntry type="module" module-name="library" />
+    <orderEntry type="module" module-name="library" />
   </component>
 </module>

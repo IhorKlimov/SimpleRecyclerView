@@ -2,12 +2,6 @@ package com.myhexaville.simplerecyclerview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +10,12 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.myhexaville.simplerecyclerview.holders.ProgressBarHolder;
 import com.myhexaville.simplerecyclerview.listeners.OnEmptyListener;
@@ -103,17 +103,21 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         adapter.isFooterEnabled = footerEnabled;
     }
 
+    public RecyclerView.ItemAnimator getItemAnimator() {
+        return recycler.getItemAnimator();
+    }
+
     public void setOnLoadMoreListener(Runnable listener) {
         recycler.setOnLoadMoreListener(listener);
         this.footerEnabled = true;
         adapter.isFooterEnabled = true;
     }
 
-    public void addItemDecoration(@NonNull  RecyclerView.ItemDecoration decor) {
+    public void addItemDecoration(@NonNull RecyclerView.ItemDecoration decor) {
         recycler.addItemDecoration(decor);
     }
 
-    public void addItemDecoration(@NonNull  RecyclerView.ItemDecoration decor, int index) {
+    public void addItemDecoration(@NonNull RecyclerView.ItemDecoration decor, int index) {
         recycler.addItemDecoration(decor, index);
     }
 
@@ -142,7 +146,7 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         recycler.clearOnScrollListeners();
 
         nestedScroll.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-            if(v.getChildAt(v.getChildCount() - 1) != null) {
+            if (v.getChildAt(v.getChildCount() - 1) != null) {
                 if ((scrollY >= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
                         scrollY > oldScrollY) {
                     recycler.endlessListener.fetchMore(adapter);
