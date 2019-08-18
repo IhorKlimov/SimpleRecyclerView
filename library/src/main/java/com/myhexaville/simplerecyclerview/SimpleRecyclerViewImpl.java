@@ -51,7 +51,7 @@ public class SimpleRecyclerViewImpl extends RecyclerView {
             getAdapter().notifyItemRangeInserted(
                     endlessListener.sizeBeforeFetching,
                     endlessListener.sizeAfterFetching - endlessListener.sizeBeforeFetching);
-        } else if (endlessListener.sizeBeforeFetching == 0) {
+        } else {
             getAdapter().notifyDataSetChanged();
         }
     }
