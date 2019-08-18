@@ -2,7 +2,7 @@ package com.myhexaville.simplerecyclerview;
 
 
 import android.content.Context;
-import androidx.annotation.LayoutRes;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -62,7 +62,7 @@ public class SimpleRecyclerViewImpl extends RecyclerView {
     }
 
     public void setOnEmptyListener(OnEmptyListener onEmptyListener) {
-        ((SimpleRecyclerView.Adapter) getAdapter()).setOnEmptyListener = onEmptyListener;
+        ((SimpleRecyclerView.Adapter) getAdapter()).onEmptyListener = onEmptyListener;
     }
 
 }

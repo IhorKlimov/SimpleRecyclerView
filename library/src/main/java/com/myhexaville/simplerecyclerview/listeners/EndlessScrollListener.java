@@ -1,8 +1,9 @@
 package com.myhexaville.simplerecyclerview.listeners;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.myhexaville.simplerecyclerview.SimpleRecyclerView;
 
@@ -47,7 +48,7 @@ public class EndlessScrollListener extends RecyclerView.OnScrollListener {
             this.adapter = adapter;
         }
         sizeBeforeFetching = adapter.getCount();
-        if (listener!=null  ) {
+        if (listener != null) {
             Log.d(LOG_TAG, "fetchMore: run");
             listener.run();
         }

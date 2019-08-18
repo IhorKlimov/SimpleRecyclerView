@@ -54,8 +54,8 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
 
     private void init(@NonNull Context context, AttributeSet attrs) {
         inflate(context, R.layout.simple_recycler_view, this);
-        recycler = (SimpleRecyclerViewImpl) findViewById(R.id.recycler);
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        recycler = findViewById(R.id.recycler);
+        progressBar = findViewById(R.id.progress_bar);
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
                 R.styleable.SimpleRecyclerView,
@@ -67,7 +67,6 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         at.recycle();
 
         try {
-
             int emptyLayout = a.getResourceId(R.styleable.SimpleRecyclerView_empty_layout, -1);
             progressLayout = a.getResourceId(R.styleable.SimpleRecyclerView_progress_layout, -1);
             boolean initialProgressLayoutEnabled = a.getBoolean(R.styleable.SimpleRecyclerView_initial_progress_bar_enabled, true);
@@ -77,7 +76,7 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
             }
 
             if (emptyLayout != -1) {
-                emptyView = (ViewStub) findViewById(R.id.empty_view);
+                emptyView = findViewById(R.id.empty_view);
                 emptyView.setLayoutResource(emptyLayout);
                 emptyView.inflate();
                 emptyView.setVisibility(INVISIBLE);
@@ -128,6 +127,9 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         if (progressBar.getVisibility() == VISIBLE) {
             progressBar.setVisibility(GONE);
         }
+        if (adapter.getCount() != 0 && emptyView.getVisibility() == VISIBLE) {
+            emptyView.setVisibility(INVISIBLE);
+        }
         recycler.setDoneFetching();
     }
 
@@ -158,7 +160,7 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
     public static abstract class Adapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         @LayoutRes
         int progressLayout;
-        OnEmptyListener setOnEmptyListener;
+        OnEmptyListener onEmptyListener;
         boolean isFooterEnabled;
         private static final int ITEM_TYPE_BODY = 1;
         private static final int ITEM_TYPE_FOOTER = 2;
@@ -194,10 +196,11 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         final public int getItemCount() {
             Log.d(LOG_TAG, "getItemCount: " + getCount());
             if (getCount() == 0) {
-                setOnEmptyListener.onEmptyList();
+                onEmptyListener.onEmptyList();
                 return 0;
             } else {
-                return isFooterEnabled ? getCount() + 1 : getCount();
+                if ()
+                    return isFooterEnabled ? getCount() + 1 : getCount();
             }
         }
 
