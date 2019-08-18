@@ -127,7 +127,7 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         if (progressBar.getVisibility() == VISIBLE) {
             progressBar.setVisibility(GONE);
         }
-        if (adapter.getCount() != 0 && emptyView.getVisibility() == VISIBLE) {
+        if (adapter.getCount() != 0) {
             emptyView.setVisibility(INVISIBLE);
         }
         recycler.setDoneFetching();
