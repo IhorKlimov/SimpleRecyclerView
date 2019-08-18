@@ -199,8 +199,7 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
                 onEmptyListener.onEmptyList();
                 return 0;
             } else {
-                if ()
-                    return isFooterEnabled ? getCount() + 1 : getCount();
+                return isFooterEnabled ? getCount() + 1 : getCount();
             }
         }
 
