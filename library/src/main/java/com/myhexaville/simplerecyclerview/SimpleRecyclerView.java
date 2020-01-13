@@ -144,6 +144,10 @@ public class SimpleRecyclerView extends FrameLayout implements OnEmptyListener {
         }
     }
 
+    public void addOnScrollListener(RecyclerView.OnScrollListener listener) {
+        recycler.addOnScrollListener(listener);
+    }
+
     public void setInsideNestedScrollView(NestedScrollView nestedScroll) {
         recycler.clearOnScrollListeners();
 

@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="300dp">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_height="match_parent"
-            app:imageUrl="@{movie.posterUrl}" />
+       <TextView
+           android:layout_width="wrap_content"
+           android:text="Demo"
+           android:layout_margin="100dp"
+           android:layout_height="wrap_content" />
 
     </FrameLayout>
 </layout>

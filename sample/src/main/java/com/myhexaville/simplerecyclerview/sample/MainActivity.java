@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         DividerItemDecoration itemDecorator = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(ContextCompat.getDrawable(this, R.drawable.list_item_divider));
         binding.simpleRecyclerView.addItemDecoration(itemDecorator);
+        binding.simpleRecyclerView.setDoneFetching();
 
         new Handler().postDelayed(() -> {
             list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
@@ -47,20 +48,27 @@ public class MainActivity extends AppCompatActivity {
             list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
 
             binding.simpleRecyclerView.setDoneFetching();
-        }, 3000);
-
-        binding.simpleRecyclerView.setInsideNestedScrollView(binding.nestedScroll);
-
-        binding.simpleRecyclerView.setOnLoadMoreListener(() -> {
-            Log.d(LOG_TAG, "setupList: fetch more");
-            new Handler().postDelayed(() -> {
-                list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
-                list.add(new Movie("http://digitalspyuk.cdnds.net/15/50/1600x800/landscape-1449498579-darth-vader-star-wars.jpg"));
-                list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
-
-                binding.simpleRecyclerView.setDoneFetching();
-            }, 3000);
-        });
+        }, 10000);
+//        new Handler().postDelayed(() -> {
+//            list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
+//            list.add(new Movie("http://digitalspyuk.cdnds.net/15/50/1600x800/landscape-1449498579-darth-vader-star-wars.jpg"));
+//            list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
+//
+//            binding.simpleRecyclerView.setDoneFetching();
+//        }, 3000);
+//
+//        binding.simpleRecyclerView.setInsideNestedScrollView(binding.nestedScroll);
+//
+//        binding.simpleRecyclerView.setOnLoadMoreListener(() -> {
+//            Log.d(LOG_TAG, "setupList: fetch more");
+//            new Handler().postDelayed(() -> {
+//                list.add(new Movie("http://www.theonlinebeacon.com/wp-content/uploads/2016/01/star_wars_battlefront_dice.0.jpg"));
+//                list.add(new Movie("http://digitalspyuk.cdnds.net/15/50/1600x800/landscape-1449498579-darth-vader-star-wars.jpg"));
+//                list.add(new Movie("https://secure.cdn2.wdpromedia.com/resize/mwImage/1/900/360/90/wdpromedia.disney.go.com/media/wdpro-hkdl-assets/prod/en-intl/system/images/hkdl-event-star-wars-hero-4character.jpg"));
+//
+//                binding.simpleRecyclerView.setDoneFetching();
+//            }, 3000);
+//        });
 
     }
 }
